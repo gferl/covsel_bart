@@ -29,7 +29,7 @@
 #' dim(covdata_embed$covdata)
 #' @export
 
-giocovsel <- function (covdata, pa, weights = NULL, force = NULL, algorithms = c("glm", 
+covsel.embed <- function (covdata, pa, weights = NULL, force = NULL, algorithms = c("glm", 
                                                                     "gam", "rf", "bart"), ncov = ceiling(log2(length(which(pa == 
                                                                                                                      1)))), maxncov = 12, nthreads = detectCores()/2, subbart=FALSE){
   ranks_1 <- data.frame()
