@@ -174,6 +174,24 @@ arguments with default values round(log2(number of occurrences)) and 12,
 respectively. See help(`covsel.embed`) for details on other optional
 arguments (i.e. `weights`, `force`, `nthreads`, etc.).
 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+[MODIFICATIONS PROPOSED (and introduced in the code)]:
+
+Covariates obtained from the Random Forest–regularized regression with a Gini importance equal to zero are reordered according to their importance prior to regularization.
+
+An optional Bayesian criterion has been introduced. When enabled, a BART model is fitted and variables are ranked based on their importance, defined as the relative frequency with which each variable is used to split decision nodes.
+
+A subbart argument has been added. If subbart = TRUE, an automatic variable selection procedure is initiated in which:
+(i) a BART model is trained using n variables;
+(ii) the RMSE is recorded;
+(iii) the least informative variable is removed;
+(iv) a new BART model is trained with n − 1 variables.
+This iterative process continues until a single variable remains, and the final selected subset corresponds to the model configuration that yields the minimum RMSE.]
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
 ``` r
 covdata<-data_covfilter
 pa<-data_covsel$pa
